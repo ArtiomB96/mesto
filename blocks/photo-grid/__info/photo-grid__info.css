@@ -1,0 +1,9 @@
+.photo-grid__info {
+    max-width: 246px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 21px;
+    margin-top: 25px;
+    margin-bottom: 32px;
+  }

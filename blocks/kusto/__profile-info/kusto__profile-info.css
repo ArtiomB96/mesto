@@ -1,0 +1,7 @@
+.kusto__profile-info {
+    max-width: 336px;
+    /* align-items: center; */
+    padding-top: 22px;
+    display: flex;
+    flex-direction: column;
+ }

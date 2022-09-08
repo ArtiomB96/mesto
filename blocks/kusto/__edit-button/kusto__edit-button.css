@@ -1,0 +1,9 @@
+.kusto__edit-button {
+    width: 24px;
+    height: 24px;
+    margin-left: 18px;
+    margin-right: auto;
+    display: flex;
+    align-self: center;
+    margin-top: -20px;
+  }
