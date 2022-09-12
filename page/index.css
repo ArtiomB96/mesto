@@ -8,7 +8,10 @@
 @import url(../blocks/kusto/__title/kusto__title.css);
 @import url(../blocks/kusto/__subtitle/kusto__subtitle.css);
 @import url(../blocks/kusto/__edit-button/kusto__edit-button.css);
+@import url(../blocks/kusto/__text/kusto__text.css);
 @import url(../blocks/kusto/__add-button/kusto__add-button.css);
+@import url(../blocks/kusto/__krest-image/kusto__krest-image.css);
+@import url(../blocks/kusto/__karandash-image/kusto__karandash-image.css);
 @import url(../blocks/photo-grid/photo-grid.css);
 @import url(../blocks/photo-grid/__item/photo-grid__item.css);
 @import url(../blocks/photo-grid/__image/photo-grid__image.css);

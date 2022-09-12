@@ -1,13 +1,16 @@
 .kusto__add-button {
     width: 150px;
     height: 50px;
+    border: 2px solid white;
+    background-color: black;
   }
 
   @media screen and (max-width: 320px) {
     .kusto__add-button {
         width: 282px;
         height: 50px;
-        object-fit: contain;
+        margin-top: 36px;
+        
   
     }
 }

@@ -1,7 +1,16 @@
 .kusto__profile-info {
-    max-width: 336px;
-    /* align-items: center; */
-    padding-top: 22px;
     display: flex;
-    flex-direction: column;
- }
+    flex-direction: row;
+    margin-left: 26.25px;
+    margin-right: auto;
+    
+  }
+
+  @media screen and (max-width: 320px) {
+    .kusto__profile-info {
+        max-width: 282px;
+        width: 100%;
+        margin-left: 46px;
+       
+    }
+}
