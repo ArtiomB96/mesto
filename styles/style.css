@@ -326,6 +326,7 @@ background-color: #FFFFFF;
   } */
   .edit-form__close {
     position: absolute;
+    background-color: black;
     top: -48px;
     right: -28px;
     width: 32px ;
