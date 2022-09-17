@@ -1,0 +1,30 @@
+.edit-form__close {
+    position: absolute;
+    background-color: black;
+    top: -48px;
+    right: -28px;
+    width: 32px ;
+    height: 32px;
+    cursor: pointer;
+}
+
+.edit-form__close:before,
+.edit-form__close:after {
+    content: "";
+    position: absolute;
+    top: 21px;
+    left: 10px;
+    width: 32px;
+    height: 4px;
+    background: white;
+}
+
+.edit-form__close:before {
+   
+    transform: rotate(45deg);
+}
+
+.edit-form__close:after {
+    
+    transform: rotate(-45deg);
+}

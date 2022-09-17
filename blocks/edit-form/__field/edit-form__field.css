@@ -1,0 +1,21 @@
+.edit-form__field {
+    margin: 0 auto;
+    margin-left: 36px;
+    max-width: 358px;
+    width: 100%;
+    outline: 0;
+    border-width: 0 0 1px;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.78px;
+    padding-bottom: 13px;
+  }
+
+  .edit-form__field:first-child {
+    margin-top: 54px;
+   }
+  
+   .edit-form__field:last-child {
+    margin-top: 30px;
+   }
