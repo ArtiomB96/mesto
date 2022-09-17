@@ -8,3 +8,17 @@
     margin-bottom: 37px;
     margin-left: 36px;
    }
+
+   @media screen and (max-width: 320px) {
+    .edit-form__save  {
+        max-width: 238px;
+        width: 100%;
+        margin-top: 45px;
+        margin-left: 22px;
+        margin-bottom: 25px;
+        
+        
+
+        
+    }
+}

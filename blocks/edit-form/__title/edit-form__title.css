@@ -9,3 +9,16 @@
     margin-top: 34px;
     
 }
+
+@media screen and (max-width: 320px) {
+    .edit-form__title {
+        max-width: 238px;
+        width: 100%;
+        margin-top: 25px;
+        margin-left: 22px;
+        font-size: 18px;
+        line-height: 21.78px;
+
+        
+    }
+}
