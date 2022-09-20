@@ -4,13 +4,16 @@
     margin-left: 26.25px;
     margin-right: auto;
     
+    
   }
 
   @media screen and (max-width: 320px) {
     .kusto__profile-info {
         max-width: 282px;
         width: 100%;
-        margin-left: 46px;
+        /* margin-left: 46px;
+        margin-right: 0; */
+        justify-content: center;
        
     }
 }

@@ -1,4 +1,4 @@
-.edit-form {
+.edit-form_open {
     position: relative;
     max-width: 430px;
     width: 100%;
@@ -6,11 +6,11 @@
     border-radius: 10px;
     position: relative;
     background-color: #FFFFFF;
-    display: none;
+    display: block;
     }
 
     @media screen and (max-width: 320px) {
-        .edit-form {
+        .edit-form_open {
             max-width: 282px;
             width: 100%;
             align-items: center;
