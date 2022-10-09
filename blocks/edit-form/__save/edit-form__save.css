@@ -9,6 +9,9 @@
     margin-left: 36px;
     cursor: pointer;
    }
+   .edit-form__save:hover {
+    opacity: 0.8;
+   } 
 
    @media screen and (max-width: 320px) {
     .edit-form__save  {

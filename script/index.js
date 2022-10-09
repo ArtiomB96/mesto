@@ -29,9 +29,17 @@ let titleElem = document.querySelector('.kusto__title');
 let subtitleElem = document.querySelector('.kusto__subtitle');
 let inputName = document.querySelector('.edit-form__field_name');
 let inputInfo = document.querySelector('.edit-form__field_info');
-let onButtonSave = function () {
+let onButtonSave = function (evt) {
     titleElem.textContent = inputName.value;
+    subtitleElem.textContent = inputInfo.value;
+    if (inputName.value !==0 & inputInfo.value !==0) {
+        overlay.classList.remove('overlay-form_open'); //закрыть оверлэй
+        popup.classList.remove('edit-form_open'); //закрыть попап
+    }
+    evt.preventDefault();
+
 }
 buttonSave.addEventListener('click', onButtonSave);
+
 
 console.log(buttonSave)

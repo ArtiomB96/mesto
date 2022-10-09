@@ -1,0 +1,9 @@
+.photo-grid__like-button {
+   
+    border: 1px solid white;
+    background-color: white;
+    cursor: pointer;
+  }
+  .photo-grid__like-button:hover {
+    opacity: 0.5;
+  }
