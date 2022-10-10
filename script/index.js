@@ -40,6 +40,13 @@ let onButtonSave = function (evt) {
 
 }
 buttonSave.addEventListener('click', onButtonSave);
-
-
 console.log(buttonSave)
+
+//Код нажатия на кнопку лайка
+let buttonLike = document.querySelector('.photo-grid__like-button');
+let imageLike = document.querySelector('.photo-grid__like');
+let onButtonLike = function (buttonLike) {
+imageLike.classList.toggle('photo-grid__like_black');
+}
+buttonLike.addEventListener('click', onButtonLike);
+console.log(buttonLike)
