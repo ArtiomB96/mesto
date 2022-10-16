@@ -1,20 +1,20 @@
 .kusto__title {
-    font-family: Inter, Arial, Helvetica, sans-serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  color: white;
+  margin: 0;
+  display: flex;
+}
+
+@media screen and (max-width: 320px) {
+  .kusto__title {
     font-weight: 500;
-    font-size: 42px;
-    line-height: 48px;
+    font-size: 27px;
+    line-height: 32.68px;
     color: white;
     margin: 0;
-    display: flex;
+    text-align: center;
   }
-
-  @media screen and (max-width: 320px) {
-    .kusto__title {
-      font-weight: 500;
-      font-size: 27px;
-      line-height: 32.68px;
-      color: white;
-      margin: 0;
-      text-align: center;
-    }
 }

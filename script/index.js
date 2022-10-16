@@ -32,7 +32,7 @@ let inputInfo = document.querySelector('.edit-form__field_info');
 let onButtonSave = function (evt) {
     titleElem.textContent = inputName.value;
     subtitleElem.textContent = inputInfo.value;
-    if (inputName.value !==0 & inputInfo.value !==0) {
+    if (inputName.value !== 0 & inputInfo.value !== 0) {
         overlay.classList.remove('overlay-form_open'); //закрыть оверлэй
         popup.classList.remove('edit-form_open'); //закрыть попап
     }
@@ -46,7 +46,7 @@ console.log(buttonSave)
 let buttonLike = document.querySelector('.photo-grid__like-button');
 let imageLike = document.querySelector('.photo-grid__like');
 let onButtonLike = function (buttonLike) {
-imageLike.classList.toggle('photo-grid__like_black');
+    imageLike.classList.toggle('photo-grid__like_black');
 }
 buttonLike.addEventListener('click', onButtonLike);
 console.log(buttonLike)

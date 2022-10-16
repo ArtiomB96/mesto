@@ -7,13 +7,13 @@
     position: relative;
     background-color: #FFFFFF;
     display: block;
-    }
+}
 
-    @media screen and (max-width: 320px) {
-        .edit-form_open {
-            max-width: 282px;
-            width: 100%;
-            align-items: center;
-            
-        }
+@media screen and (max-width: 320px) {
+    .edit-form_open {
+        max-width: 282px;
+        width: 100%;
+        align-items: center;
+
     }
+}

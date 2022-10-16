@@ -1,11 +1,12 @@
 .overlay-form {
-    display: none;
-  } 
-  @media screen and (max-width: 320px) {
-    .overlay-form {
-        max-width: 320px;
-        width: 100%;
+  display: none;
+}
 
-        
-    }
+@media screen and (max-width: 320px) {
+  .overlay-form {
+    max-width: 320px;
+    width: 100%;
+
+
+  }
 }

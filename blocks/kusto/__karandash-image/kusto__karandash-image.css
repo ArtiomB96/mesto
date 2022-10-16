@@ -1,15 +1,14 @@
-.kusto__karandash-image
-{
+.kusto__karandash-image {
   width: 10px;
   height: 10px;
-  
-  
+
+
 }
 
 @media screen and (max-width: 320px) {
-    .kusto__karandash-image{
-        width: 7.5px;
-        height: 7.5px;
-  
-    }
+  .kusto__karandash-image {
+    width: 7.5px;
+    height: 7.5px;
+
+  }
 }

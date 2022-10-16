@@ -8,21 +8,22 @@
     margin-bottom: 37px;
     margin-left: 36px;
     cursor: pointer;
-   }
-   .edit-form__save:hover {
-    opacity: 0.8;
-   } 
+}
 
-   @media screen and (max-width: 320px) {
-    .edit-form__save  {
+.edit-form__save:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 320px) {
+    .edit-form__save {
         max-width: 238px;
         width: 100%;
         margin-top: 45px;
         margin-left: 22px;
         margin-bottom: 25px;
-        
-        
 
-        
+
+
+
     }
 }

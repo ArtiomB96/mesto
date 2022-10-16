@@ -10,34 +10,34 @@
     font-size: 18px;
     line-height: 21.78px;
     padding-bottom: 13px;
-  }
+}
 
-  .edit-form__field:first-child {
+.edit-form__field:first-child {
     margin-top: 54px;
-   }
-  
-   .edit-form__field:last-child {
-    margin-top: 30px;
-   }
+}
 
-   @media screen and (max-width: 320px) {
+.edit-form__field:last-child {
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 320px) {
     .edit-form__field {
         max-width: 238px;
         width: 100%;
         font-size: 14px;
         line-height: 16.94px;
         margin-left: 22px;
-        
 
-        
+
+
     }
 }
 
 @media screen and (max-width: 320px) {
-    .edit-form__field:first-child  {
+    .edit-form__field:first-child {
         margin-top: 75px;
-        
 
-        
+
+
     }
 }
