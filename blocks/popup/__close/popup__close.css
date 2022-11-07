@@ -1,4 +1,4 @@
-.edit-form__close {
+.popup__close {
     position: absolute;
     background-color: black;
     top: -48px;
@@ -10,8 +10,8 @@
 
 }
 
-.edit-form__close:before,
-.edit-form__close:after {
+.popup__close:before,
+.popup__close:after {
     content: "";
     position: absolute;
     top: 21px;
@@ -21,22 +21,22 @@
     background: white;
 }
 
-.edit-form__close:before {
+.popup__close:before {
 
     transform: rotate(45deg);
 }
 
-.edit-form__close:after {
+.popup__close:after {
 
     transform: rotate(-45deg);
 }
 
-.edit-form__close:hover {
+.popup__close:hover {
     opacity: 0.7;
 }
 
 @media screen and (max-width: 320px) {
-    .edit-form__close {
+    .popup__close {
         top: -56px;
         right: 19px;
         width: 20px;

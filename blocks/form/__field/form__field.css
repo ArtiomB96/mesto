@@ -1,4 +1,4 @@
-.edit-form__field {
+.form__field {
     margin: 0 auto;
     margin-left: 36px;
     max-width: 358px;
@@ -12,16 +12,16 @@
     padding-bottom: 13px;
 }
 
-.edit-form__field:first-child {
+.form__field:first-child {
     margin-top: 54px;
 }
 
-.edit-form__field:last-child {
+.form__field:last-child {
     margin-top: 30px;
 }
 
 @media screen and (max-width: 320px) {
-    .edit-form__field {
+    .form__field {
         max-width: 238px;
         width: 100%;
         font-size: 14px;
@@ -34,7 +34,7 @@
 }
 
 @media screen and (max-width: 320px) {
-    .edit-form__field:first-child {
+    .form__field:first-child {
         margin-top: 75px;
 
 

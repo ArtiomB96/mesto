@@ -13,7 +13,7 @@
   <div class="page">
     <header class="header">
       <img src="images/Vector.png" class="header__logo" alt="Место">
-      <!-- <img src="images/Line.png" class="header__line" alt="Линия"> -->
+
     </header>
     <main class="content">
       <section class="kusto">
@@ -89,21 +89,43 @@
       <p class="footer__text"> &reg; 2020 Mesto Russia</p>
     </footer>
   </div>
-  <div class="overlay-form">
+  <div class="overlay-form edit-overlay">
+    <div class="popup edit-popup">
 
-    <form class="edit-form">
-      <button type="button" class="edit-form__close">
+
+      <button type="button" class="popup__close edit-close">
 
       </button>
-      <legend class="edit-form__title">Редактировать профиль</legend>
-      <label><input type="text" class="edit-form__field edit-form__field_name">
-        <input type="text" class="edit-form__field edit-form__field_info"></label>
-      <button type="submit" class="edit-form__save">
-        <p class="edit-form__text">Сохранить</p>
-      </button>
-    </form>
-
+      <form class="form">
+        <legend class="form__title">Редактировать профиль</legend>
+        <label><input type="text" class="form__field form__field_name">
+          <input type="text" class="form__field form__field_info"></label>
+        <button type="submit" class="form__save">
+          <p class="form__text">Сохранить</p>
+        </button>
+      </form>
+    </div>
   </div>
+
+  <div class="overlay-form add-overlay">
+    <div class="popup add-popup">
+
+
+      <button type="button" class="popup__close add-close">
+
+      </button>
+      <form class="edit-form">
+        <legend class="edit-form__title">Новое место</legend>
+        <label><input type="text" class="edit-form__field edit-form__field_name">
+          <input type="text" class="edit-form__field edit-form__field_info"></label>
+        <button type="submit" class="edit-form__save">
+          <p class="edit-form__text">Создать</p>
+        </button>
+      </form>
+    </div>
+  </div>
+
+
   <script src="script/index.js"></script>
 
 </body>
