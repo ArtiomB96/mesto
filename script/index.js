@@ -11,8 +11,7 @@ const titleElem = document.querySelector('.kusto__title');
 const subtitleElem = document.querySelector('.kusto__subtitle');
 const inputName = document.querySelector('.form__field_name');
 const inputInfo = document.querySelector('.form__field_info');
-const buttonLike = document.querySelector('.photo-grid__like-button');
-const imageLike = document.querySelector('.photo-grid__like');
+const cards = document.querySelectorAll('.photo-grid__item');
 const popupAddButton = document.querySelector('.kusto__add-button'); //нахожу в обработчике кнопку, с которой работаю
 const addPopup = document.querySelector('.add-popup');
 const addOverlay = document.querySelector('.add-overlay');
@@ -24,8 +23,8 @@ function openPopup(overlay, popup) {
 
 }
 function closePopup(overlay, popup) {
-    overlay.classList.remove('overlay-form_open'); 
-    popup.classList.remove('popup_open'); 
+    overlay.classList.remove('overlay-form_open');
+    popup.classList.remove('popup_open');
 
 }
 // Код сохранения информации в блок кусто профиль инфо
@@ -39,11 +38,8 @@ function save(evt) {
 
 
 }
-//Код нажатия на кнопку лайка
 
-function like() {
-    imageLike.classList.toggle('photo-grid__like_black');
-}
+
 
 popupEditButton.addEventListener('click', function () {
     openPopup(editOverlay, editPopup)
@@ -59,5 +55,19 @@ addPopupClose.addEventListener('click', function () {
     closePopup(addOverlay, addPopup)
 }); //связал команду клик и функцию замены классов по клику
 buttonSave.addEventListener('click', save);
-buttonLike.addEventListener('click', like);
-console.log(buttonLike)
+// buttonLike.addEventListener('click', like);
+
+//функция добавление лайка и удаления карточек
+cards.forEach(card => {
+    const buttonLike = card.querySelector('.photo-grid__like-button')
+    const imageLike = card.querySelector('.photo-grid__like')
+    const buttonDelete = card.querySelector('.photo-grid__delete')
+    function like() {
+        imageLike.classList.toggle('photo-grid__like_black');
+    }
+    function deleteItem() {
+        card.remove();
+    }
+    buttonLike.addEventListener('click', like);
+    buttonDelete.addEventListener('click', deleteItem);
+});
