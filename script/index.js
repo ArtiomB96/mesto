@@ -17,33 +17,33 @@ const addPopup = document.querySelector('.add-popup');
 const addOverlay = document.querySelector('.add-overlay');
 const cards = [
     {
-      name: 'Архыз',
-      imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+        name: 'Архыз',
+        imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
     },
     {
-      name: 'Челябинская область',
-      imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+        name: 'Челябинская область',
+        imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
     },
     {
-      name: 'Иваново',
-      imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+        name: 'Иваново',
+        imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
     },
     {
-      name: 'Камчатка',
-      imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+        name: 'Камчатка',
+        imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
     },
     {
-      name: 'Холмогорский район',
-      imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+        name: 'Холмогорский район',
+        imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
     },
     {
-      name: 'Байкал',
-      imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+        name: 'Байкал',
+        imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
-  ];
+];
 
-  const containerGrid = document.querySelector('.photo-grid');
-  console.log(containerGrid)
+const containerGrid = document.querySelector('.photo-grid');
+console.log(containerGrid)
 
 //создаю функцию, которая будет менять классы оверлэя и попапа
 function openPopup(overlay, popup) {
@@ -87,38 +87,63 @@ buttonSave.addEventListener('click', save);
 // buttonLike.addEventListener('click', like);
 
 //функция добавление лайка и удаления карточек
-cards.forEach(card => { 
-   
-    containerGrid.insertAdjacentHTML('beforeend', `
-    <div class="photo-grid__item">
-        
-          <img src="${card.imageUrl}" class="photo-grid__image"  alt="${card.name}">
-          <button class="photo-grid__delete">
-          <img src="images/Group.png" class="photo-grid__delete-image" alt="Картинка">
-        </button>
-          <div class="photo-grid__info">
-            <p class="photo-grid__title">${card.name}</p>
-            <button class="photo-grid__like-button"> 
-              <img src="images/like.svg" class="photo-grid__like" alt="Картинка"> </button>
-          </div> 
-            
-  `  
-  
-  )
-  console.log(card)
-    // const buttonLike = card.createElement('button class="photo-grid__like-button" ');
-    // console.log(buttonLike)
-    // const imageLike = card.querySelector('.photo-grid__like')
-    //  const buttonDelete = card.createElement('button');
-    // buttonDelete.classList.add('photo-grid__delete');
-    // function like() {
-    //     imageLike.classList.toggle('photo-grid__like_black');
-    // } 
-    // function deleteItem() {
-    //     card.remove();
-    // }
-    // buttonLike.addEventListener('click', like);
-    // buttonDelete.addEventListener('click', deleteItem);
-} );
+cards.forEach(card => {
+
+
+    const cardElement = document.createElement('div');
+    cardElement.classList.add('photo-grid__item');
+
+    const cardImage = document.createElement('img');
+    cardImage.src = card.imageUrl;
+    cardImage.classList.add('photo-grid__image');
+    const buttonDelete = document.createElement('button');
+    buttonDelete.classList.add('photo-grid__delete');
+    const cardInfo = document.createElement('div');
+    cardInfo.classList.add('photo-grid__info');
+    const cardTitle = document.createElement('p');
+    cardTitle.textContent = card.name;
+    cardTitle.classList.add('photo-grid__title');
+
+
+
+    containerGrid.appendChild(cardElement);
     
+
+
+
+
+    cardElement.appendChild(cardImage);
+    cardElement.appendChild(cardInfo);
+    cardInfo.appendChild(cardTitle);
    
+
+    console.log(buttonDelete)
+    cardElement.appendChild(buttonDelete);
+    const buttonLike = document.createElement('button');
+    buttonLike.classList.add('photo-grid__like-button');
+    const imageLike = document.createElement('img');
+    imageLike.src = 'images/like.svg';
+    imageLike.classList.add('photo-grid__like');
+    cardInfo.appendChild(buttonLike);
+    buttonLike.appendChild(imageLike);
+
+    function deleteItem() {
+        cardElement.remove();
+    }
+    
+    function like() {
+        imageLike.classList.toggle('photo-grid__like_black');
+    } 
+
+    function openImageItem(overlay) {
+        cardImage.classList.add('overlay-form_open'); //добавил оверлэй при открытом попап
+        // popup.classList.add('popup_open'); //добавил открытый попап
+    
+    }
+
+    buttonLike.addEventListener('click', like);
+    buttonDelete.addEventListener('click', deleteItem);
+    cardImage.addEventListener('click', openImageItem);
+});
+
+
