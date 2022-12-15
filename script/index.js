@@ -92,7 +92,7 @@ cards.forEach(card => {
     // overlayItem.classList.add('overlay-form');
     const cardElement = document.createElement('div');
     cardElement.classList.add('photo-grid__item');
-    
+
 
     const cardImage = document.createElement('img');
     cardImage.src = card.imageUrl;
@@ -106,23 +106,16 @@ cards.forEach(card => {
     cardTitle.classList.add('photo-grid__title');
     const overlayItem = document.querySelector('.item-overlay');
     const imagePopup = document.querySelector('.popup_image');
-const imagePopupTitle = imagePopup.querySelector('.popup__title');
-const imagePopupClose = document.querySelector('.image-close');
-
-const imagePopupImage = imagePopup.querySelector('.popup__image');
-    
+    const imagePopupTitle = imagePopup.querySelector('.popup__title');
+    const imagePopupClose = document.querySelector('.image-close');
 
 
+    const imagePopupImage = imagePopup.querySelector('.popup__image');
     containerGrid.appendChild(cardElement);
-    
-
-
-
-
     cardElement.appendChild(cardImage);
     cardElement.appendChild(cardInfo);
     cardInfo.appendChild(cardTitle);
-   
+
 
     console.log(buttonDelete)
     cardElement.appendChild(buttonDelete);
@@ -133,22 +126,22 @@ const imagePopupImage = imagePopup.querySelector('.popup__image');
     imageLike.classList.add('photo-grid__like');
     cardInfo.appendChild(buttonLike);
     buttonLike.appendChild(imageLike);
-    
+
 
     function deleteItem() {
         cardElement.remove();
     }
-    
+
     function like() {
         imageLike.classList.toggle('photo-grid__like_black');
-    } 
+    }
 
     function openImageItem(overlay, imagePopup) {
-     overlay.classList.add('overlay-form_open'); //добавил оверлэй при открытом попап
-     imagePopup.classList.add('popup_image');
-     imagePopupTitle.textContent = card.name;
-      imagePopupImage.src = cardImage.src;
-    
+        overlay.classList.add('overlay-form_open'); //добавил оверлэй при открытом попап
+        imagePopup.classList.add('popup_image');
+        imagePopupTitle.textContent = card.name;
+        imagePopupImage.src = cardImage.src;
+
     }
 
     buttonLike.addEventListener('click', like);
@@ -159,6 +152,70 @@ const imagePopupImage = imagePopup.querySelector('.popup__image');
     imagePopupClose.addEventListener('click', function () {
         closePopup(overlayItem, imagePopup)
     }); //связал команду клик и функцию замены классов по клику
+
 });
 
+const createNewItem = document.querySelector('.item-create');
+const inputImageName = document.querySelector('.form__field_image-name');
+const inputImage = document.querySelector('.form__field_url');
+createNewItem.addEventListener('click',  function create(evt) {
+    evt.preventDefault();
+    const cardElement = document.createElement('div');
+    cardElement.classList.add('photo-grid__item');
+    const cardImage = document.createElement('img');
+    cardImage.src = inputImage.value;
+    const overlayItem = document.querySelector('.item-overlay');
+    const imagePopup = document.querySelector('.popup_image');
+    const imagePopupTitle = imagePopup.querySelector('.popup__title');
+    const imagePopupClose = document.querySelector('.image-close');
+
+
+    const imagePopupImage = imagePopup.querySelector('.popup__image');
+    cardImage.classList.add('photo-grid__image');
+    const buttonDelete = document.createElement('button');
+    buttonDelete.classList.add('photo-grid__delete');
+    const cardInfo = document.createElement('div');
+    cardInfo.classList.add('photo-grid__info');
+    const cardTitle = document.createElement('p');
+    cardTitle.textContent = inputImageName.value;
+    cardTitle.classList.add('photo-grid__title');
+    containerGrid.prepend(cardElement);
+    cardElement.appendChild(cardImage);
+    cardElement.appendChild(cardInfo);
+    cardInfo.appendChild(cardTitle);
+    cardElement.appendChild(buttonDelete);
+    const buttonLike = document.createElement('button');
+    buttonLike.classList.add('photo-grid__like-button');
+    const imageLike = document.createElement('img');
+    imageLike.src = 'images/like.svg';
+    imageLike.classList.add('photo-grid__like');
+    cardInfo.appendChild(buttonLike);
+    buttonLike.appendChild(imageLike);
+    addOverlay.classList.remove('overlay-form_open'); //закрыть оверлэй
+    addPopup.classList.remove('popup_open'); //закрыть попап
+
+    function deleteItem() {
+        cardElement.remove();
+    }
+    function like() {
+        imageLike.classList.toggle('photo-grid__like_black');
+    }
+    function openImageItem(overlay, imagePopup) {
+        overlay.classList.add('overlay-form_open'); //добавил оверлэй при открытом попап
+        imagePopup.classList.add('popup_image');
+        imagePopupTitle.textContent = inputImageName.value;
+        imagePopupImage.src = inputImage.value;
+
+    }
+    buttonDelete.addEventListener('click', deleteItem);
+    buttonLike.addEventListener('click', like);
+    cardImage.addEventListener('click', function () {
+        openImageItem(overlayItem, imagePopup);
+    });
+    imagePopupClose.addEventListener('click', function () {
+        closePopup(overlayItem, imagePopup)
+    }); 
+
+
+});
 
