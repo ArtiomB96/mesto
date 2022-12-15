@@ -29,7 +29,10 @@
 @import url(../blocks/overlay-form/overlay-form.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_open/popup_open.css);
+@import url(../blocks/popup/popup_image/popup_image.css);
+@import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/overlay-form/_open/overlay-form_open.css);
 @import url(../blocks/form/form.css);
 

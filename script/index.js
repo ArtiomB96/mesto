@@ -88,10 +88,11 @@ buttonSave.addEventListener('click', save);
 
 //функция добавление лайка и удаления карточек
 cards.forEach(card => {
-
-
+    // const overlayItem = document.createElement('div');
+    // overlayItem.classList.add('overlay-form');
     const cardElement = document.createElement('div');
     cardElement.classList.add('photo-grid__item');
+    
 
     const cardImage = document.createElement('img');
     cardImage.src = card.imageUrl;
@@ -103,7 +104,13 @@ cards.forEach(card => {
     const cardTitle = document.createElement('p');
     cardTitle.textContent = card.name;
     cardTitle.classList.add('photo-grid__title');
+    const overlayItem = document.querySelector('.item-overlay');
+    const imagePopup = document.querySelector('.popup_image');
+const imagePopupTitle = imagePopup.querySelector('.popup__title');
+const imagePopupClose = document.querySelector('.image-close');
 
+const imagePopupImage = imagePopup.querySelector('.popup__image');
+    
 
 
     containerGrid.appendChild(cardElement);
@@ -126,6 +133,7 @@ cards.forEach(card => {
     imageLike.classList.add('photo-grid__like');
     cardInfo.appendChild(buttonLike);
     buttonLike.appendChild(imageLike);
+    
 
     function deleteItem() {
         cardElement.remove();
@@ -135,15 +143,22 @@ cards.forEach(card => {
         imageLike.classList.toggle('photo-grid__like_black');
     } 
 
-    function openImageItem(overlay) {
-        cardImage.classList.add('overlay-form_open'); //добавил оверлэй при открытом попап
-        // popup.classList.add('popup_open'); //добавил открытый попап
+    function openImageItem(overlay, imagePopup) {
+     overlay.classList.add('overlay-form_open'); //добавил оверлэй при открытом попап
+     imagePopup.classList.add('popup_image');
+     imagePopupTitle.textContent = card.name;
+      imagePopupImage.src = cardImage.src;
     
     }
 
     buttonLike.addEventListener('click', like);
     buttonDelete.addEventListener('click', deleteItem);
-    cardImage.addEventListener('click', openImageItem);
+    cardImage.addEventListener('click', function () {
+        openImageItem(overlayItem, imagePopup);
+    });
+    imagePopupClose.addEventListener('click', function () {
+        closePopup(overlayItem, imagePopup)
+    }); //связал команду клик и функцию замены классов по клику
 });
 
 

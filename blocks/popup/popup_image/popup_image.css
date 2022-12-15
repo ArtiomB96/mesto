@@ -1,0 +1,20 @@
+.popup_image {
+    display: block;
+    max-width: 816px;
+    /* display: flex;
+    flex-direction: column; */
+    width: 100%;
+    background: none;
+    border-radius: 0px;
+    border-width: 0;
+}
+
+@media screen and (max-width: 320px) {
+    .popup_open {
+        max-width: 282px;
+        max-height: 299px;
+        width: 100%;
+        align-items: center;
+
+    }
+}
