@@ -1,8 +1,6 @@
 .popup_image {
     display: block;
     max-width: 816px;
-    /* display: flex;
-    flex-direction: column; */
     width: 100%;
     background: none;
     border-radius: 0px;

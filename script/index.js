@@ -158,7 +158,7 @@ cards.forEach(card => {
 const createNewItem = document.querySelector('.item-create');
 const inputImageName = document.querySelector('.form__field_image-name');
 const inputImage = document.querySelector('.form__field_url');
-createNewItem.addEventListener('click',  function create(evt) {
+createNewItem.addEventListener('click', function create(evt) {
     evt.preventDefault();
     const cardElement = document.createElement('div');
     cardElement.classList.add('photo-grid__item');
@@ -214,7 +214,7 @@ createNewItem.addEventListener('click',  function create(evt) {
     });
     imagePopupClose.addEventListener('click', function () {
         closePopup(overlayItem, imagePopup)
-    }); 
+    });
 
 
 });
