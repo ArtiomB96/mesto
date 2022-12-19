@@ -1,0 +1,17 @@
+.kusto__profile-info {
+  display: flex;
+  flex-direction: row;
+  margin-left: 26.25px;
+  margin-right: auto;
+
+
+}
+
+@media screen and (max-width: 320px) {
+  .kusto__profile-info {
+    max-width: 282px;
+    width: 100%;
+    justify-content: center;
+
+  }
+}
