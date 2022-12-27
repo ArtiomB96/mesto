@@ -11,10 +11,12 @@ const titleElem = document.querySelector('.kusto__title');
 const subtitleElem = document.querySelector('.kusto__subtitle');
 const inputName = document.querySelector('.form__field_name');
 const inputInfo = document.querySelector('.form__field_info');
-// const cards = document.querySelectorAll('.photo-grid__item');
 const popupAddButton = document.querySelector('.kusto__add-button'); //нахожу в обработчике кнопку, с которой работаю
 const addPopup = document.querySelector('.add-popup');
 const addOverlay = document.querySelector('.add-overlay');
+const createNewItem = document.querySelector('.item-create');
+const inputImageName = document.querySelector('.form__field_image-name');
+const inputImage = document.querySelector('.form__field_url');
 const cards = [
     {
         name: 'Архыз',
@@ -49,12 +51,10 @@ console.log(containerGrid)
 function openPopup(overlay, popup) {
     overlay.classList.add('overlay-form_open'); //добавил оверлэй при открытом попап
     popup.classList.add('popup_open'); //добавил открытый попап
-
 }
 function closePopup(overlay, popup) {
     overlay.classList.remove('overlay-form_open');
     popup.classList.remove('popup_open');
-
 }
 // Код сохранения информации в блок кусто профиль инфо
 
@@ -64,36 +64,11 @@ function save(evt) {
     subtitleElem.textContent = inputInfo.value;
     editOverlay.classList.remove('overlay-form_open'); //закрыть оверлэй
     editPopup.classList.remove('popup_open'); //закрыть попап
-
-
 }
 
-
-
-popupEditButton.addEventListener('click', function () {
-    openPopup(editOverlay, editPopup)
-}); //связал команду клик и функцию замены классов по клику
-editPopupClose.addEventListener('click', function () {
-    closePopup(editOverlay, editPopup)
-}); //связал команду клик и функцию замены классов по клику
-
-popupAddButton.addEventListener('click', function () {
-    openPopup(addOverlay, addPopup)
-}); //связал команду клик и функцию замены классов по клику
-addPopupClose.addEventListener('click', function () {
-    closePopup(addOverlay, addPopup)
-}); //связал команду клик и функцию замены классов по клику
-buttonSave.addEventListener('click', save);
-// buttonLike.addEventListener('click', like);
-
-//функция добавление лайка и удаления карточек
-cards.forEach(card => {
-    // const overlayItem = document.createElement('div');
-    // overlayItem.classList.add('overlay-form');
+function createCard(card) {
     const cardElement = document.createElement('div');
     cardElement.classList.add('photo-grid__item');
-
-
     const cardImage = document.createElement('img');
     cardImage.src = card.imageUrl;
     cardImage.classList.add('photo-grid__image');
@@ -108,16 +83,11 @@ cards.forEach(card => {
     const imagePopup = document.querySelector('.popup_image');
     const imagePopupTitle = imagePopup.querySelector('.popup__title');
     const imagePopupClose = document.querySelector('.image-close');
-
-
     const imagePopupImage = imagePopup.querySelector('.popup__image');
     containerGrid.appendChild(cardElement);
     cardElement.appendChild(cardImage);
     cardElement.appendChild(cardInfo);
     cardInfo.appendChild(cardTitle);
-
-
-    console.log(buttonDelete)
     cardElement.appendChild(buttonDelete);
     const buttonLike = document.createElement('button');
     buttonLike.classList.add('photo-grid__like-button');
@@ -141,7 +111,6 @@ cards.forEach(card => {
         imagePopup.classList.add('popup_image');
         imagePopupTitle.textContent = card.name;
         imagePopupImage.src = cardImage.src;
-
     }
 
     buttonLike.addEventListener('click', like);
@@ -153,69 +122,40 @@ cards.forEach(card => {
         closePopup(overlayItem, imagePopup)
     }); //связал команду клик и функцию замены классов по клику
 
-});
+    return cardElement;
+}
 
-const createNewItem = document.querySelector('.item-create');
-const inputImageName = document.querySelector('.form__field_image-name');
-const inputImage = document.querySelector('.form__field_url');
+
+
+
+popupEditButton.addEventListener('click', function () {
+    openPopup(editOverlay, editPopup)
+}); //связал команду клик и функцию замены классов по клику
+editPopupClose.addEventListener('click', function () {
+    closePopup(editOverlay, editPopup)
+}); //связал команду клик и функцию замены классов по клику
+
+popupAddButton.addEventListener('click', function () {
+    openPopup(addOverlay, addPopup)
+}); //связал команду клик и функцию замены классов по клику
+addPopupClose.addEventListener('click', function () {
+    closePopup(addOverlay, addPopup)
+}); //связал команду клик и функцию замены классов по клику
+buttonSave.addEventListener('click', save);
+// buttonLike.addEventListener('click', like);
+
+//функция добавление лайка и удаления карточек
+cards.forEach(card => {
+    const cardElement = createCard(card);
+    containerGrid.appendChild(cardElement);
+}
+);
+
+
 createNewItem.addEventListener('click', function create(evt) {
     evt.preventDefault();
-    const cardElement = document.createElement('div');
-    cardElement.classList.add('photo-grid__item');
-    const cardImage = document.createElement('img');
-    cardImage.src = inputImage.value;
-    const overlayItem = document.querySelector('.item-overlay');
-    const imagePopup = document.querySelector('.popup_image');
-    const imagePopupTitle = imagePopup.querySelector('.popup__title');
-    const imagePopupClose = document.querySelector('.image-close');
-
-
-    const imagePopupImage = imagePopup.querySelector('.popup__image');
-    cardImage.classList.add('photo-grid__image');
-    const buttonDelete = document.createElement('button');
-    buttonDelete.classList.add('photo-grid__delete');
-    const cardInfo = document.createElement('div');
-    cardInfo.classList.add('photo-grid__info');
-    const cardTitle = document.createElement('p');
-    cardTitle.textContent = inputImageName.value;
-    cardTitle.classList.add('photo-grid__title');
+    const cardElement = createCard({ name: inputImageName.value, imageUrl: inputImage.value });
     containerGrid.prepend(cardElement);
-    cardElement.appendChild(cardImage);
-    cardElement.appendChild(cardInfo);
-    cardInfo.appendChild(cardTitle);
-    cardElement.appendChild(buttonDelete);
-    const buttonLike = document.createElement('button');
-    buttonLike.classList.add('photo-grid__like-button');
-    const imageLike = document.createElement('img');
-    imageLike.src = 'images/like.svg';
-    imageLike.classList.add('photo-grid__like');
-    cardInfo.appendChild(buttonLike);
-    buttonLike.appendChild(imageLike);
-    addOverlay.classList.remove('overlay-form_open'); //закрыть оверлэй
-    addPopup.classList.remove('popup_open'); //закрыть попап
-
-    function deleteItem() {
-        cardElement.remove();
-    }
-    function like() {
-        imageLike.classList.toggle('photo-grid__like_black');
-    }
-    function openImageItem(overlay, imagePopup) {
-        overlay.classList.add('overlay-form_open'); //добавил оверлэй при открытом попап
-        imagePopup.classList.add('popup_image');
-        imagePopupTitle.textContent = inputImageName.value;
-        imagePopupImage.src = inputImage.value;
-
-    }
-    buttonDelete.addEventListener('click', deleteItem);
-    buttonLike.addEventListener('click', like);
-    cardImage.addEventListener('click', function () {
-        openImageItem(overlayItem, imagePopup);
-    });
-    imagePopupClose.addEventListener('click', function () {
-        closePopup(overlayItem, imagePopup)
-    });
-
-
+    closePopup(addOverlay, addPopup);
 });
 
