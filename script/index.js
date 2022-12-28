@@ -52,6 +52,7 @@ function openPopup(overlay, popup) {
     overlay.classList.add('overlay-form_open'); //добавил оверлэй при открытом попап
     popup.classList.add('popup_open'); //добавил открытый попап
 }
+
 function closePopup(overlay, popup) {
     overlay.classList.remove('overlay-form_open');
     popup.classList.remove('popup_open');
@@ -84,7 +85,6 @@ function createCard(card) {
     const imagePopupTitle = imagePopup.querySelector('.popup__title');
     const imagePopupClose = document.querySelector('.image-close');
     const imagePopupImage = imagePopup.querySelector('.popup__image');
-    containerGrid.appendChild(cardElement);
     cardElement.appendChild(cardImage);
     cardElement.appendChild(cardInfo);
     cardInfo.appendChild(cardTitle);
@@ -115,9 +115,11 @@ function createCard(card) {
 
     buttonLike.addEventListener('click', like);
     buttonDelete.addEventListener('click', deleteItem);
+
     cardImage.addEventListener('click', function () {
         openImageItem(overlayItem, imagePopup);
     });
+
     imagePopupClose.addEventListener('click', function () {
         closePopup(overlayItem, imagePopup)
     }); //связал команду клик и функцию замены классов по клику
@@ -130,6 +132,7 @@ function createCard(card) {
 
 popupEditButton.addEventListener('click', function () {
     openPopup(editOverlay, editPopup)
+
 }); //связал команду клик и функцию замены классов по клику
 editPopupClose.addEventListener('click', function () {
     closePopup(editOverlay, editPopup)
@@ -138,11 +141,12 @@ editPopupClose.addEventListener('click', function () {
 popupAddButton.addEventListener('click', function () {
     openPopup(addOverlay, addPopup)
 }); //связал команду клик и функцию замены классов по клику
+
 addPopupClose.addEventListener('click', function () {
     closePopup(addOverlay, addPopup)
 }); //связал команду клик и функцию замены классов по клику
+
 buttonSave.addEventListener('click', save);
-// buttonLike.addEventListener('click', like);
 
 //функция добавление лайка и удаления карточек
 cards.forEach(card => {
