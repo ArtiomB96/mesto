@@ -83,7 +83,7 @@ function createCard(card) {
     const overlayItem = document.querySelector('.item-overlay');
     const imagePopup = document.querySelector('.popup_image');
     const imagePopupTitle = imagePopup.querySelector('.popup__title');
-    const imagePopupClose = document.querySelector('.image-close');
+    const imagePopupClose = imagePopup.querySelector('.image-close');
     const imagePopupImage = imagePopup.querySelector('.popup__image');
     cardElement.appendChild(cardImage);
     cardElement.appendChild(cardInfo);
