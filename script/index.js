@@ -9,8 +9,11 @@ const editPopupClose = document.querySelector('.edit-close');
 const addPopupClose = document.querySelector('.add-close');
 const titleElem = document.querySelector('.kusto__title');
 const subtitleElem = document.querySelector('.kusto__subtitle');
-const inputName = document.querySelector('.form__field_name');
-const inputInfo = document.querySelector('.form__field_info');
+const formElement = document.querySelector('.form');
+const formInput = formElement.querySelector('.form__input');
+const inputName = document.querySelector('.form__input_name');
+const inputInfo = document.querySelector('.form__input_info');
+const formError = formElement.querySelector(`.${formInput.id}-error`);
 const popupAddButton = document.querySelector('.kusto__add-button'); //нахожу в обработчике кнопку, с которой работаю
 const addPopup = document.querySelector('.add-popup');
 const addOverlay = document.querySelector('.add-overlay');
@@ -127,8 +130,32 @@ function createCard(card) {
     return cardElement;
 }
 
+const showInputError = (inputName, inputInfo) => {
+    inputName.classList.add('form__input_type_error');
+    formError.classList.add('form__input-error_active');
+    inputInfo.classList.add('form__input_type_error');
+    formError.classList.add('form__input-error_active');
+  };
 
+const hideInputError = (inputName, inputInfo) => {
+    inputName.classList.remove('form__input_type_error');
+    formError.classList.remove('form__input-error_active');
+    inputInfo.classList.remove('form__input_type_error');
+    formError.classList.remove('form__input-error_active');
+  };
+// Функция, которая проверяет валидность поля
+const isValid = () => {
+    if (!formInput.validity.valid) {
+      // Если поле не проходит валидацию, покажем ошибку
+      showInputError(formInput);
+    } else {
+      // Если проходит, скроем
+      hideInputError(formInput);
+    }
+  };
 
+  // Вызовем функцию isValid на каждый ввод символа
+formInput.addEventListener('input', isValid); 
 
 popupEditButton.addEventListener('click', function () {
     openPopup(editOverlay, editPopup)

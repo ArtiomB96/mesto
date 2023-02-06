@@ -1,4 +1,4 @@
-.form__field {
+.form__input {
     margin: 0 auto;
     margin-left: 36px;
     max-width: 358px;
@@ -12,16 +12,23 @@
     padding-bottom: 13px;
 }
 
-.form__field:first-child {
+.form__input:first-child {
     margin-top: 54px;
 }
 
-.form__field:last-child {
+.form__input:last-child {
     margin-top: 30px;
 }
 
+.form__input_type_error {
+    border-bottom-color: red;
+  
+    /* Нижняя рамка становится красной всякий раз, 
+    когда введённые данные некорректны */
+  }
+
 @media screen and (max-width: 320px) {
-    .form__field {
+    .form__input {
         max-width: 238px;
         width: 100%;
         font-size: 14px;
@@ -34,7 +41,7 @@
 }
 
 @media screen and (max-width: 320px) {
-    .form__field:first-child {
+    .form__input:first-child {
         margin-top: 75px;
 
 
