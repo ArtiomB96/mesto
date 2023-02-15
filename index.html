@@ -44,14 +44,14 @@
       <form class="form" novalidate>
         <legend class="form__title">Редактировать профиль</legend>
         <label class="form__field">
-          <input id="name-input" class="form__input form__input_name" type="text" placeholder="Имя"
-            minlength="2" required>
+          <input id="name-input" class="form__input form__input_name" type="text" placeholder="Имя" minlength="2"
+            required>
           <span class="form__input-error name-input-error">Минимальное количество символов:2. Длина текста
             сейчас: 1 символ.</span>
         </label>
         <label class="form__field">
-          <input id="info-input" class="form__input form__input_info" type="text" placeholder="О себе"
-            minlength="2" required>
+          <input id="info-input" class="form__input form__input_info" type="text" placeholder="О себе" minlength="2"
+            required>
           <span class="form__input-error info-input-error">Минимальное количество символов:2. Длина текста
             сейчас: 1 символ.</span>
         </label>
@@ -68,8 +68,13 @@
       <button type="button" class="popup__close add-close"></button>
       <form class="form" novalidate>
         <legend class="form__title">Новое место</legend>
-        <label><input placeholder="Название" type="text" class="form__field form__field_image-name">
-          <input placeholder="Ссылка на картинку" type="url" class="form__field form__field_url"></label>
+        <label class="form__field"><input id="image-name-input" class="form__input form__input_image-name" type="text"
+            placeholder="Название" minlength="2" required>
+          <span class="form__input-error image-name-input-error">Минимальное количество символов:2. Длина текста
+            сейчас: 1 символ.</span>
+        </label>
+        <label class="form__field">
+          <input class="form__input form__input_url" type="url" placeholder="Ссылка на картинку" required></label>
         <button type="submit" class="form__save item-create">
           <p class="form__text">Создать</p>
         </button>
