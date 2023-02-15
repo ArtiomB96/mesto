@@ -36,6 +36,7 @@
 @import url(../blocks/overlay-form/_open/overlay-form_open.css);
 @import url(../blocks/form/form.css);
 
+@import url(../blocks/form/__field/form__field.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__input-error/form__input-error.css);
 @import url(../blocks/form/__save/form__save.css);

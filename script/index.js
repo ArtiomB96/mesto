@@ -49,6 +49,7 @@ const cards = [
 
 const containerGrid = document.querySelector('.photo-grid');
 console.log(containerGrid)
+console.log(formInput)
 
 //создаю функцию, которая будет менять классы оверлэя и попапа
 function openPopup(overlay, popup) {
@@ -130,32 +131,66 @@ function createCard(card) {
     return cardElement;
 }
 
-const showInputError = (inputName, inputInfo) => {
-    inputName.classList.add('form__input_type_error');
+const showInputError = (formElement, inputElement) => {
+    const formError = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.add('form__input_type_error');
     formError.classList.add('form__input-error_active');
-    inputInfo.classList.add('form__input_type_error');
-    formError.classList.add('form__input-error_active');
+    
   };
 
-const hideInputError = (inputName, inputInfo) => {
-    inputName.classList.remove('form__input_type_error');
+const hideInputError = (formElement, inputElement) => {
+    const formError = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove('form__input_type_error');
     formError.classList.remove('form__input-error_active');
-    inputInfo.classList.remove('form__input_type_error');
-    formError.classList.remove('form__input-error_active');
+    
   };
 // Функция, которая проверяет валидность поля
-const isValid = () => {
-    if (!formInput.validity.valid) {
+const isValid = (formElement, inputElement) => {
+    if (!inputElement.validity.valid) {
       // Если поле не проходит валидацию, покажем ошибку
-      showInputError(formInput);
+      showInputError(formElement,inputElement);
     } else {
       // Если проходит, скроем
-      hideInputError(formInput);
+      console.log(inputElement)
+      hideInputError(formElement, inputElement);
     }
   };
-
+  console.log(inputInfo)
+  const setEventListeners = (formElement) => {
+    // Находим все поля внутри формы,
+    // сделаем из них массив методом Array.from
+    const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+  
+    // Обойдём все элементы полученной коллекции
+    inputList.forEach((inputElement) => {
+      // каждому полю добавим обработчик события input
+      inputElement.addEventListener('input', () => {
+        // Внутри колбэка вызовем isValid,
+        // передав ей форму и проверяемый элемент
+        isValid(formElement, inputElement)
+        console.log(inputElement)
+      });
+    });
+  }; 
+  const enableValidation = () => {
+    // Найдём все формы с указанным классом в DOM,
+    // сделаем из них массив методом Array.from
+    const formList = Array.from(document.querySelectorAll('.form'));
+  
+    // Переберём полученную коллекцию
+    formList.forEach((formElement) => {
+      // Для каждой формы вызовем функцию setEventListeners,
+      // передав ей элемент формы
+      setEventListeners(formElement);
+    });
+  };
+  
+  // Вызовем функцию
+  enableValidation();
   // Вызовем функцию isValid на каждый ввод символа
-formInput.addEventListener('input', isValid); 
+// formInput.addEventListener('input', isValid); 
+// inputInfo.addEventListener('input', isValid); 
+
 
 popupEditButton.addEventListener('click', function () {
     openPopup(editOverlay, editPopup)

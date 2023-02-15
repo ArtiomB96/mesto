@@ -43,10 +43,19 @@
       <button type="button" class="popup__close edit-close"></button>
       <form class="form" novalidate>
         <legend class="form__title">Редактировать профиль</legend>
-        <label class="form__field"><input id="name-input" class="form__input form__input_name" type="text" placeholder="Имя" minlength="2" required>
-          <span class=" form__input-error name-input-error">Минимальное количество символов:2. Длина текста сейчас: 1 символ.</span>
-          <input type="text" class="form__input form__input_info"  placeholder="О себе"  minlength="2" required>
+        <label class="form__field">
+          <input id="name-input" class="form__input form__input_name" type="text" placeholder="Имя"
+            minlength="2" required>
+          <span class="form__input-error name-input-error">Минимальное количество символов:2. Длина текста
+            сейчас: 1 символ.</span>
         </label>
+        <label class="form__field">
+          <input id="info-input" class="form__input form__input_info" type="text" placeholder="О себе"
+            minlength="2" required>
+          <span class="form__input-error info-input-error">Минимальное количество символов:2. Длина текста
+            сейчас: 1 символ.</span>
+        </label>
+
         <button type="submit" class="form__save">
           <p class="form__text">Сохранить</p>
         </button>
