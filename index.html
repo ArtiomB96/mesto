@@ -46,18 +46,16 @@
         <label class="form__field">
           <input id="name-input" class="form__input form__input_name" type="text" placeholder="Имя" minlength="2"
             required>
-          <span class="form__input-error name-input-error">Минимальное количество символов:2. Длина текста
-            сейчас: 1 символ.</span>
+          <span class="form__input-error name-input-error"></span>
         </label>
         <label class="form__field">
           <input id="info-input" class="form__input form__input_info" type="text" placeholder="О себе" minlength="2"
             required>
-          <span class="form__input-error info-input-error">Минимальное количество символов:2. Длина текста
-            сейчас: 1 символ.</span>
+          <span class="form__input-error info-input-error"></span>
         </label>
 
-        <button type="submit" class="form__save">
-          <p class="form__text">Сохранить</p>
+        <button type="submit" class="form__save form__save_inactive">
+          Сохранить
         </button>
       </form>
     </div>
@@ -70,13 +68,15 @@
         <legend class="form__title">Новое место</legend>
         <label class="form__field"><input id="image-name-input" class="form__input form__input_image-name" type="text"
             placeholder="Название" minlength="2" required>
-          <span class="form__input-error image-name-input-error">Минимальное количество символов:2. Длина текста
-            сейчас: 1 символ.</span>
+          <span class="form__input-error image-name-input-error"></span>
         </label>
         <label class="form__field">
-          <input class="form__input form__input_url" type="url" placeholder="Ссылка на картинку" required></label>
+          <input id="url-input" class="form__input form__input_url" type="url" placeholder="Ссылка на картинку"
+            required>
+          <span class="form__input-error url-input-error"></span>
+        </label>
         <button type="submit" class="form__save item-create">
-          <p class="form__text">Создать</p>
+          Создать
         </button>
       </form>
     </div>

@@ -8,11 +8,22 @@
     margin-bottom: 37px;
     margin-left: 36px;
     cursor: pointer;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    display: block
+
+    
 }
 
 .form__save:hover {
     opacity: 0.8;
 }
+
 
 @media screen and (max-width: 320px) {
     .form__save {
