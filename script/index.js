@@ -127,9 +127,19 @@ function createCard(card) {
         closePopup(overlayItem, imagePopup)
     }); //связал команду клик и функцию замены классов по клику
 
-    overlayItem.addEventListener('click', function () {
-        closePopup(overlayItem, imagePopup)
+    overlayItem.addEventListener('click', function (evt) {
+        if (evt.target.classList.contains('item-overlay')) {
+            closePopup(evt.target);
+        }
     }); //связал команду клик и функцию замены классов по клику
+
+    window.addEventListener('keydown', function (evt) {
+        if (evt.key === 'Escape') {
+            closePopup(overlayItem, imagePopup)
+
+        }
+
+    });
 
     return cardElement;
 }
@@ -166,7 +176,6 @@ const setEventListeners = (formElement) => {
     // сделаем из них массив методом Array.from
     const inputList = Array.from(formElement.querySelectorAll('.form__input'));
     const buttonElement = formElement.querySelector('.form__save');
-    console.log(buttonElement)
 
     // Обойдём все элементы полученной коллекции
     inputList.forEach((inputElement) => {
@@ -176,7 +185,7 @@ const setEventListeners = (formElement) => {
             // передав ей форму и проверяемый элемент
             isValid(formElement, inputElement);
             // Вызовем toggleButtonState и передадим ей массив полей и кнопку
-      toggleButtonState(inputList, buttonElement);
+            toggleButtonState(inputList, buttonElement);
             console.log(inputElement)
         });
     });
@@ -200,29 +209,29 @@ enableValidation();
 const hasInvalidInput = (inputList) => {
     // проходим по этому массиву методом some
     return inputList.some((inputElement) => {
-      // Если поле не валидно, колбэк вернёт true
-      // Обход массива прекратится и вся функция
-      // hasInvalidInput вернёт true
-  
-      return !inputElement.validity.valid;
-    })
-  };  
+        // Если поле не валидно, колбэк вернёт true
+        // Обход массива прекратится и вся функция
+        // hasInvalidInput вернёт true
 
-  // Функция принимает массив полей ввода
+        return !inputElement.validity.valid;
+    })
+};
+
+// Функция принимает массив полей ввода
 // и элемент кнопки, состояние которой нужно менять
 
 const toggleButtonState = (inputList, buttonElement) => {
     // Если есть хотя бы один невалидный инпут
     if (hasInvalidInput(inputList)) {
-      // сделай кнопку неактивной
-      buttonElement.classList.add('form__save_inactive');
-      buttonElement.disabled = true;
+        // сделай кнопку неактивной
+        buttonElement.classList.add('form__save_inactive');
+        buttonElement.disabled = true;
     } else {
-      // иначе сделай кнопку активной
-      buttonElement.classList.remove('form__save_inactive');
-      buttonElement.disabled = false;
+        // иначе сделай кнопку активной
+        buttonElement.classList.remove('form__save_inactive');
+        buttonElement.disabled = false;
     }
-  };
+};
 
 
 popupEditButton.addEventListener('click', function () {
@@ -241,6 +250,8 @@ addPopupClose.addEventListener('click', function () {
     closePopup(addOverlay, addPopup)
 }); //связал команду клик и функцию замены классов по клику
 
+
+
 buttonSave.addEventListener('click', save);
 
 //функция добавление лайка и удаления карточек
@@ -258,10 +269,34 @@ createNewItem.addEventListener('click', function create(evt) {
     closePopup(addOverlay, addPopup);
 });
 
-editOverlay.addEventListener('click', function () {
-    closePopup(editOverlay, editPopup)
+editOverlay.addEventListener('click', function (evt) {
+    if (evt.target.classList.contains('edit-overlay')) {
+        closePopup(evt.target);
+    }
 }); //закрытие попапа 'редактировать профиль' по нажатию на оверлэй
 
-addOverlay.addEventListener('click', function () {
-    closePopup(addOverlay, addPopup)
+addOverlay.addEventListener('click', function (evt) {
+    if (evt.target.classList.contains('add-overlay')) {
+        closePopup(evt.target);
+    }
+
 }); //закрытие попапа 'редактировать профиль' по нажатию на оверлэй
+
+window.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+        closePopup(addOverlay, addPopup)
+
+    }
+
+}); //закрытие попапа 'редактировать профиль' по нажатию на оверлэй
+
+window.addEventListener('keyup', function (evt) {
+    evt.preventDefault();
+    if (evt.key === 'Escape') {
+        evt.preventDefault();
+        closePopup(editOverlay, editPopup)
+
+    }
+
+});
+
