@@ -7,6 +7,24 @@
 
 }
 
+@media screen and (max-width: 750px) {
+  .kusto__profile-info {
+    max-width: 282px;
+    width: 100%;
+    justify-content: center;
+
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .kusto__profile-info {
+    max-width: 282px;
+    width: 100%;
+    justify-content: center;
+
+  }
+}
+
 @media screen and (max-width: 320px) {
   .kusto__profile-info {
     max-width: 282px;

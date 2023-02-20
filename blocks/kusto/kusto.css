@@ -9,6 +9,26 @@
 
 }
 
+@media screen and (max-width: 750px) {
+  .kusto {
+    max-width: 282px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .kusto {
+    max-width: 282px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .kusto {
     max-width: 282px;

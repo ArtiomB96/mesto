@@ -8,6 +8,28 @@
   display: flex;
 }
 
+@media screen and (max-width: 750px) {
+  .kusto__title {
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 32.68px;
+    color: white;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .kusto__title {
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 32.68px;
+    color: white;
+    margin: 0;
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .kusto__title {
     font-weight: 500;
