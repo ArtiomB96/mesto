@@ -1,5 +1,13 @@
 .overlay-form {
-  display: none;
+  /* display: none; */
+  cursor: pointer;
+  opacity: 0;
+  transition: 2s;
+}
+
+.overlay-form.overlay-form_open{
+  opacity: 1;
+  transition: 1s;
 }
 
 @media screen and (max-width: 320px) {

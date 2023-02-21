@@ -1,7 +1,6 @@
 .kusto__image {
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 170px;
   object-fit: cover;
   object-position: center;
 }

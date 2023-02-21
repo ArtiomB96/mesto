@@ -8,14 +8,11 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  
 }
 
 @media screen and (max-width: 320px) {
   .overlay-form {
     max-width: 320px;
     width: 100%;
-
-
   }
 }

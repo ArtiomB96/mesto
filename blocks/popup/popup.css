@@ -9,11 +9,12 @@
     display: none;
 }
 
+
+
 @media screen and (max-width: 320px) {
     .edit-form {
         max-width: 282px;
         width: 100%;
         align-items: center;
-
     }
 }

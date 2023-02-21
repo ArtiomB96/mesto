@@ -1,7 +1,6 @@
 .kusto__text {
   max-width: 336px;
-  padding-top: 22px;
+  padding-top: 18px;
   display: flex;
   flex-direction: column;
-
 }
