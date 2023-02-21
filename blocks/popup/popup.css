@@ -1,20 +1,17 @@
 .popup {
-    position: relative;
-    max-width: 430px;
-    width: 100%;
-    border: 1px solid white;
-    border-radius: 10px;
-    position: relative;
-    background-color: #FFFFFF;
-    display: none;
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 10px;
+  position: relative;
+  background-color: #ffffff;
 }
 
-
-
 @media screen and (max-width: 320px) {
-    .edit-form {
-        max-width: 282px;
-        width: 100%;
-        align-items: center;
-    }
+  .edit-form {
+    max-width: 282px;
+    width: 100%;
+    align-items: center;
+  }
 }
