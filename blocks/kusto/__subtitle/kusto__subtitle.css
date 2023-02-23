@@ -1,12 +1,11 @@
 .kusto__subtitle {
-  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 21.78px;
   color: white;
   margin-top: 16px;
   margin-bottom: 0px;
-
 }
 
 @media screen and (max-width: 750px) {

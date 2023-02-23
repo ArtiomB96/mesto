@@ -17,7 +17,7 @@ const formError = formElement.querySelector(`.${formInput.id}-error`);
 const popupAddButton = document.querySelector('.kusto__add-button'); //нахожу в обработчике кнопку, с которой работаю
 const addPopup = document.querySelector('.add-popup');
 const addOverlay = document.querySelector('.add-overlay');
-const createNewItem = document.querySelector('.item-create');
+const createNewItemButton = document.querySelector('.item-create');
 const inputImageName = document.querySelector('.form__input_image-name');
 const inputImage = document.querySelector('.form__input_url');
 const cards = [
@@ -66,8 +66,7 @@ function save(evt) {
     evt.preventDefault();
     titleElem.textContent = inputName.value;
     subtitleElem.textContent = inputInfo.value;
-    editOverlay.classList.remove('overlay-form_open'); //закрыть оверлэй
-    editPopup.classList.remove('popup_open'); //закрыть попап
+    closePopup(editOverlay, editPopup)
 }
 
 function createCard(card) {
@@ -160,7 +159,7 @@ const hideInputError = (formElement, inputElement) => {
     formError.textContent = '';
 };
 // Функция, которая проверяет валидность поля
-const isValid = (formElement, inputElement) => {
+const checkValidation = (formElement, inputElement) => {
     if (!inputElement.validity.valid) {
         // Если поле не проходит валидацию, покажем ошибку
         showInputError(formElement, inputElement, inputElement.validationMessage);
@@ -183,7 +182,7 @@ const setEventListeners = (formElement) => {
         inputElement.addEventListener('input', () => {
             // Внутри колбэка вызовем isValid,
             // передав ей форму и проверяемый элемент
-            isValid(formElement, inputElement);
+            checkValidation(formElement, inputElement);
             // Вызовем toggleButtonState и передадим ей массив полей и кнопку
             toggleButtonState(inputList, buttonElement);
             console.log(inputElement)
@@ -203,8 +202,7 @@ const enableValidation = () => {
     });
 };
 
-// Вызовем функцию
-enableValidation();
+
 
 const hasInvalidInput = (inputList) => {
     // проходим по этому массиву методом some
@@ -262,7 +260,7 @@ cards.forEach(card => {
 );
 
 
-createNewItem.addEventListener('click', function create(evt) {
+createNewItemButton.addEventListener('click', function create(evt) {
     evt.preventDefault();
     const cardElement = createCard({ name: inputImageName.value, imageUrl: inputImage.value });
     containerGrid.prepend(cardElement);
@@ -285,7 +283,6 @@ addOverlay.addEventListener('click', function (evt) {
 window.addEventListener('keydown', function (evt) {
     if (evt.key === 'Escape') {
         closePopup(addOverlay, addPopup)
-
     }
 
 }); //закрытие попапа 'редактировать профиль' по нажатию на оверлэй
@@ -293,10 +290,11 @@ window.addEventListener('keydown', function (evt) {
 window.addEventListener('keyup', function (evt) {
     evt.preventDefault();
     if (evt.key === 'Escape') {
-        evt.preventDefault();
+        // evt.preventDefault();
         closePopup(editOverlay, editPopup)
-
     }
-
 });
+
+// Вызовем функцию
+enableValidation();
 
