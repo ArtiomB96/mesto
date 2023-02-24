@@ -54,6 +54,7 @@ const containerGrid = document.querySelector('.photo-grid');
 function openPopup(overlay, popup) {
     overlay.classList.add('overlay-form_open'); //добавил оверлэй при открытом попап
     popup.classList.add('popup_open'); //добавил открытый попап
+
 }
 
 function closePopup(overlay, popup) {
@@ -120,10 +121,12 @@ function createCard(card) {
 
     cardImage.addEventListener('click', function () {
         openImageItem(overlayItem, imagePopup);
+        document.addEventListener('keydown', closePopupByEscape);
     });
 
     imagePopupClose.addEventListener('click', function () {
         closePopup(overlayItem, imagePopup)
+        document.removeEventListener('keydown', closePopupByEscape);
     }); //связал команду клик и функцию замены классов по клику
 
     overlayItem.addEventListener('click', function (evt) {
@@ -131,14 +134,6 @@ function createCard(card) {
             closePopup(evt.target);
         }
     }); //связал команду клик и функцию замены классов по клику
-
-    window.addEventListener('keydown', function (evt) {
-        if (evt.key === 'Escape') {
-            closePopup(overlayItem, imagePopup)
-
-        }
-
-    });
 
     return cardElement;
 }
@@ -202,8 +197,6 @@ const enableValidation = () => {
     });
 };
 
-
-
 const hasInvalidInput = (inputList) => {
     // проходим по этому массиву методом some
     return inputList.some((inputElement) => {
@@ -231,24 +224,25 @@ const toggleButtonState = (inputList, buttonElement) => {
     }
 };
 
-
 popupEditButton.addEventListener('click', function () {
     openPopup(editOverlay, editPopup)
+    document.addEventListener('keydown', closePopupByEscape);
 
 }); //связал команду клик и функцию замены классов по клику
 editPopupClose.addEventListener('click', function () {
     closePopup(editOverlay, editPopup)
+    document.removeEventListener('keydown', closePopupByEscape);
 }); //связал команду клик и функцию замены классов по клику
 
 popupAddButton.addEventListener('click', function () {
     openPopup(addOverlay, addPopup)
+    document.addEventListener('keydown', closePopupByEscape);
 }); //связал команду клик и функцию замены классов по клику
 
 addPopupClose.addEventListener('click', function () {
     closePopup(addOverlay, addPopup)
+    document.removeEventListener('keydown', closePopupByEscape);
 }); //связал команду клик и функцию замены классов по клику
-
-
 
 buttonSave.addEventListener('click', save);
 
@@ -280,20 +274,14 @@ addOverlay.addEventListener('click', function (evt) {
 
 }); //закрытие попапа 'редактировать профиль' по нажатию на оверлэй
 
-window.addEventListener('keydown', function (evt) {
+const closePopupByEscape = (evt) => {
     if (evt.key === 'Escape') {
-        closePopup(addOverlay, addPopup)
+        const overlayOpen = document.querySelector('.overlay-form_open');
+        const popupActive = document.querySelector('.popup_open');
+        overlayOpen.classList.remove('overlay-form_open');
+        popupActive.classList.remove('popup_open');
     }
-
-}); //закрытие попапа 'редактировать профиль' по нажатию на оверлэй
-
-window.addEventListener('keyup', function (evt) {
-    evt.preventDefault();
-    if (evt.key === 'Escape') {
-        // evt.preventDefault();
-        closePopup(editOverlay, editPopup)
-    }
-});
+}
 
 // Вызовем функцию
 enableValidation();
