@@ -1,4 +1,4 @@
 .photo-grid__like_black {
     max-width: 22px;
-    background-image: url(/images/like_black.svg);
+    background-image: url('/images/like_black.svg');
 }

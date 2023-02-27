@@ -10,10 +10,12 @@ const addPopupClose = document.querySelector('.add-close');
 const titleElem = document.querySelector('.kusto__title');
 const subtitleElem = document.querySelector('.kusto__subtitle');
 const formElement = document.querySelector('.form');
-const formInput = formElement.querySelector('.form__input');
+// const formInput = formElement.querySelector('.form__input');
+// console.log(formInput)
 const inputName = document.querySelector('.form__input_name');
 const inputInfo = document.querySelector('.form__input_info');
-const formError = formElement.querySelector(`.${formInput.id}-error`);
+// const formError = formElement.querySelector(`.${formInput.id}-error`);
+// console.log(formError)
 const popupAddButton = document.querySelector('.kusto__add-button'); //нахожу в обработчике кнопку, с которой работаю
 const addPopup = document.querySelector('.add-popup');
 const addOverlay = document.querySelector('.add-overlay');
@@ -139,48 +141,53 @@ function createCard(card) {
 }
 
 
-const showInputError = (formElement, inputElement, errorMessage) => {
-    const formError = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add('form__input_type_error');
+const showInputError = (formElement, formFieldElement, errorMessage) => {
+    const formError = formElement.querySelector('.form__input-error');
+    formFieldElement.classList.add('form__input_type_error');
     formError.textContent = errorMessage;
     formError.classList.add('form__input-error_active');
 
 };
 
-const hideInputError = (formElement, inputElement) => {
-    const formError = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove('form__input_type_error');
+const hideInputError = (formElement, formFieldElement) => {
+    const formError = formElement.querySelector('.form__input-error');
+    formFieldElement.classList.remove('form__input_type_error');
     formError.classList.remove('form__input-error_active');
     formError.textContent = '';
 };
 // Функция, которая проверяет валидность поля
-const checkValidation = (formElement, inputElement) => {
-    if (!inputElement.validity.valid) {
+const checkValidation = (formElement, formFieldElement) => {
+    
+    if (!formFieldElement.validity.valid) {
         // Если поле не проходит валидацию, покажем ошибку
-        showInputError(formElement, inputElement, inputElement.validationMessage);
+        showInputError(formElement, formFieldElement, formFieldElement.validationMessage);
     } else {
         // Если проходит, скроем
-        console.log(inputElement)
-        hideInputError(formElement, inputElement);
+        console.log(formFieldElement)
+        hideInputError(formElement, formFieldElement);
     }
+    const formInput = formFieldElement.querySelector('.form__input');
+    console.log(formInput)
+    const formError = formFieldElement.querySelector('.form__input-error');
+    console.log(formError)
 };
 
 const setEventListeners = (formElement) => {
     // Находим все поля внутри формы,
     // сделаем из них массив методом Array.from
-    const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+    const formFieldList = Array.from(formElement.querySelectorAll('.form__field'));
     const buttonElement = formElement.querySelector('.form__save');
 
     // Обойдём все элементы полученной коллекции
-    inputList.forEach((inputElement) => {
+    formFieldList.forEach((formFieldElement) => {
         // каждому полю добавим обработчик события input
-        inputElement.addEventListener('input', () => {
+        formFieldElement.addEventListener('input', () => {
             // Внутри колбэка вызовем isValid,
             // передав ей форму и проверяемый элемент
-            checkValidation(formElement, inputElement);
+            checkValidation(formElement, formFieldElement);
             // Вызовем toggleButtonState и передадим ей массив полей и кнопку
-            toggleButtonState(inputList, buttonElement);
-            console.log(inputElement)
+            toggleButtonState(formFieldList, buttonElement);
+            console.log(formFieldElement)
         });
     });
 };
@@ -197,23 +204,23 @@ const enableValidation = () => {
     });
 };
 
-const hasInvalidInput = (inputList) => {
+const hasInvalidInput = (formFieldList) => {
     // проходим по этому массиву методом some
-    return inputList.some((inputElement) => {
+    return formFieldList.some((formFieldElement) => {
         // Если поле не валидно, колбэк вернёт true
         // Обход массива прекратится и вся функция
         // hasInvalidInput вернёт true
 
-        return !inputElement.validity.valid;
+        return !formFieldElement.validity.valid;
     })
 };
 
 // Функция принимает массив полей ввода
 // и элемент кнопки, состояние которой нужно менять
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (formFieldList, buttonElement) => {
     // Если есть хотя бы один невалидный инпут
-    if (hasInvalidInput(inputList)) {
+    if (hasInvalidInput(formFieldList)) {
         // сделай кнопку неактивной
         buttonElement.classList.add('form__save_inactive');
         buttonElement.disabled = true;

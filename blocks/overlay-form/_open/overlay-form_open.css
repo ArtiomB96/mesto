@@ -5,9 +5,3 @@
   transition: 1s;
 }
 
-@media screen and (max-width: 320px) {
-  .overlay-form {
-    max-width: 320px;
-    width: 100%;
-  }
-}
