@@ -1,0 +1,7 @@
+.overlay-form_open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+  transition: 1s;
+}
+

@@ -1,0 +1,42 @@
+.popup__close {
+    position: absolute;
+    background-color: transparent;
+    top: -48px;
+    right: -28px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border: 0px;
+}
+
+.popup__close:before,
+.popup__close:after {
+    content: "";
+    position: absolute;
+    top: 21px;
+    left: 10px;
+    width: 32px;
+    height: 4px;
+    background: white;
+}
+
+.popup__close:before {
+    transform: rotate(45deg);
+}
+
+.popup__close:after {
+    transform: rotate(-45deg);
+}
+
+.popup__close:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 320px) {
+    .popup__close {
+        top: -56px;
+        right: 19px;
+        width: 20px;
+        height: 20px;
+    }
+}

@@ -1,0 +1,36 @@
+.form-field__input {
+    margin: 0 auto;
+    margin-left: 36px;
+    max-width: 358px;
+    width: 100%;
+    outline: 0;
+    border-width: 0 0 1px;
+    font-family: "Inter", "Arial", "Helvetica", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.78px;
+    padding-bottom: 13px;
+}
+
+
+.form-field__input_type_error {
+    border-bottom-color: red;
+    /* Нижняя рамка становится красной всякий раз, 
+    когда введённые данные некорректны */
+}
+
+@media screen and (max-width: 320px) {
+    .form-field__input {
+        max-width: 238px;
+        width: 100%;
+        font-size: 14px;
+        line-height: 16.94px;
+        margin-left: 22px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .form-field__input:first-child {
+        margin-top: 75px;
+    }
+}

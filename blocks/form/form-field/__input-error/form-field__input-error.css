@@ -1,0 +1,10 @@
+.form-field__input-error {
+    color: red;
+    display: none;
+    margin-left: 36px;
+}
+
+.form-field__input-error_active {
+    color: red;
+    display: block;
+}

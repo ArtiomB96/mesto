@@ -5,78 +5,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="page/index.css">
   <title>Mesto</title>
 </head>
 
 <body>
   <div class="page">
     <header class="header">
-      <img src="images/Vector.png" class="header__vector" alt="Место">
-      <img src="images/Line.png" alt="Линия">
+      <img src="images/Vector.svg" class="header__logo" alt="Место">
     </header>
     <main class="content">
       <section class="kusto">
         <img src="images/kusto.jpg" class="kusto__image" alt="картинка">
         <div class="kusto__profile-info">
-          <h1 class="kusto__title">Жак-Ив Кусто</h1>
-          <h2 class="kusto__subtitle">Исследователь океана</h2>
+          <div class="kusto__text">
+            <h1 class="kusto__title">Жак-Ив Кусто</h1>
+            <h2 class="kusto__subtitle">Исследователь океана</h2>
+          </div>
+          <button class="kusto__edit-button">
+            <img src="images/pen.svg" class="kusto__edit-image" alt="кнопка">
+          </button>
         </div>
-        <img src="images/Edit Button.svg" class="kusto__edit-button" alt="кнопка">
-        <img src="images/Add Button.png" class="kusto__add-button" alt="кнопка">
+        <button class="kusto__add-button">
+
+          <img src="images/cross.svg" class="kusto__cross-image" alt="кнопка">
+        </button>
       </section>
-      <section class="photo-grid">
-        <div class="photo-grid__item">
-          <img src="images/karachaevsk.jpg" class="photo-grid__image" alt="Картинка">
-          <div class="photo-grid__info">
-            <p class="photo-grid__title">Карачаевск</p>
-            <img src="images/like.svg" class="photo-grid__like" alt="Картинка">
-          </div>
-        </div>
-
-        <div class="photo-grid__item">
-          <img src="images/elbrus.png" class="photo-grid__image" alt="Картинка">
-          <div class="photo-grid__info">
-            <p class="photo-grid__title">Гора Эльбрус</p>
-            <img src="images/like.svg" class="photo-grid__like" alt="Картинка">
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img src="images/dombai.png" class="photo-grid__image" alt="Картинка">
-          <div class="photo-grid__info">
-            <p class="photo-grid__title">Домбай</p>
-            <img src="images/like.svg" class="photo-grid__like" alt="Картинка">
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img src="images/elbrus.png" class="photo-grid__image" alt="Картинка">
-          <div class="photo-grid__info">
-            <p class="photo-grid__title">Гора Эльбрус</p>
-            <img src="images/like.svg" class="photo-grid__like" alt="Картинка">
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img src="images/dombai.png" class="photo-grid__image" alt="Картинка">
-          <div class="photo-grid__info">
-            <p class="photo-grid__title">Домбай</p>
-            <img src="images/like.svg" class="photo-grid__like" alt="Картинка">
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img src="images/karachaevsk.jpg" class="photo-grid__image" alt="Картинка">
-          <div class="photo-grid__info">
-            <p class="photo-grid__title">Карачаевск</p>
-            <img src="images/like.svg" class="photo-grid__like" alt="Картинка">
-          </div>
-        </div>
-
-
-      </section>
-
+      <section class="photo-grid"></section>
     </main>
     <footer class="footer">
       <p class="footer__text"> &reg; 2020 Mesto Russia</p>
     </footer>
   </div>
+  <div class="overlay-form edit-overlay">
+    <div class="popup edit-popup">
+      <button type="button" class="popup__close edit-close"></button>
+      <form class="form" novalidate>
+        <legend class="form__title">Редактировать профиль</legend>
+        <label class="form-field">
+          <input class="form-field__input form-field__input_name" type="text" placeholder="Имя" minlength="2"
+            required>
+          <span class="form-field__input-error name-input-error"></span>
+        </label>
+        <label class="form-field">
+          <input class="form-field__input form-field__input_info" type="text" placeholder="О себе" minlength="2"
+            required>
+          <span class="form-field__input-error info-input-error"></span>
+        </label>
+
+        <button type="submit" class="form__save form__save_inactive">
+          Сохранить
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="overlay-form add-overlay">
+    <div class="popup add-popup">
+      <button type="button" class="popup__close add-close"></button>
+      <form class="form" novalidate>
+        <legend class="form__title">Новое место</legend>
+        <label class="form__field"><input id="image-name-input" class="form__input form__input_image-name" type="text"
+            placeholder="Название" minlength="2" required>
+          <span class="form__input-error image-name-input-error"></span>
+        </label>
+        <label class="form__field">
+          <input id="url-input" class="form__input form__input_url" type="url" placeholder="Ссылка на картинку"
+            required>
+          <span class="form__input-error url-input-error"></span>
+        </label>
+        <button type="submit" class="form__save item-create">
+          Создать
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="overlay-form item-overlay">
+    <div class="popup popup_image">
+      <button type="button" class="popup__close image-close"></button>
+      <img src="images/arkhyz.jpg" class="popup__image">
+      <P class="popup__title"></P>
+    </div>
+  </div>
+  <script src="script/index.js"></script>
 </body>
 
 </html>
