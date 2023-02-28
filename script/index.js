@@ -12,8 +12,8 @@ const subtitleElem = document.querySelector('.kusto__subtitle');
 const formElement = document.querySelector('.form');
 // const formInput = formElement.querySelector('.form__input');
 // console.log(formInput)
-const inputName = document.querySelector('.form__input_name');
-const inputInfo = document.querySelector('.form__input_info');
+const inputName = document.querySelector('.form-field__input_name');
+const inputInfo = document.querySelector('.form-field__input_info');
 // const formError = formElement.querySelector(`.${formInput.id}-error`);
 // console.log(formError)
 const popupAddButton = document.querySelector('.kusto__add-button'); //нахожу в обработчике кнопку, с которой работаю
@@ -141,50 +141,48 @@ function createCard(card) {
 }
 
 
-const showInputError = (formElement, formFieldElement, errorMessage) => {
-    const formError = formElement.querySelector('.form__input-error');
-    formFieldElement.classList.add('form__input_type_error');
-    formError.textContent = errorMessage;
-    formError.classList.add('form__input-error_active');
-
+const showInputError = (formFieldElement, errorMessage) => {
+    const formFieldErrorElement = formFieldElement.querySelector('.form-field__input-error');
+    const formFieldInputElement = formFieldElement.querySelector('.form-field__input');
+    formFieldInputElement.classList.add('form-field__input_type_error');
+    formFieldErrorElement.textContent = errorMessage;
+    formFieldErrorElement.classList.add('form-field__input-error_active');
 };
 
-const hideInputError = (formElement, formFieldElement) => {
-    const formError = formElement.querySelector('.form__input-error');
-    formFieldElement.classList.remove('form__input_type_error');
-    formError.classList.remove('form__input-error_active');
-    formError.textContent = '';
+const hideInputError = (formFieldElement) => {
+    const formFieldErrorElement = formFieldElement.querySelector('.form-field__input-error');
+    const formFieldInputElement = formFieldElement.querySelector('.form-field__input');
+    formFieldInputElement.classList.remove('form-field__input_type_error');
+    formFieldErrorElement.classList.remove('form-field__input-error_active');
+    formFieldErrorElement.textContent = '';
 };
 // Функция, которая проверяет валидность поля
-const checkValidation = (formElement, formFieldElement) => {
-    
-    if (!formFieldElement.validity.valid) {
+const checkValidation = (formFieldElement) => {
+    const formFieldInputElement = formFieldElement.querySelector('.form-field__input');
+    if (!formFieldInputElement.validity.valid) {
         // Если поле не проходит валидацию, покажем ошибку
-        showInputError(formElement, formFieldElement, formFieldElement.validationMessage);
+        showInputError(formFieldElement, formFieldInputElement.validationMessage);
     } else {
         // Если проходит, скроем
         console.log(formFieldElement)
-        hideInputError(formElement, formFieldElement);
+        hideInputError(formFieldElement);
     }
-    const formInput = formFieldElement.querySelector('.form__input');
-    console.log(formInput)
-    const formError = formFieldElement.querySelector('.form__input-error');
-    console.log(formError)
 };
 
 const setEventListeners = (formElement) => {
     // Находим все поля внутри формы,
     // сделаем из них массив методом Array.from
-    const formFieldList = Array.from(formElement.querySelectorAll('.form__field'));
+    const formFieldList = Array.from(formElement.querySelectorAll('.form-field'));
     const buttonElement = formElement.querySelector('.form__save');
 
     // Обойдём все элементы полученной коллекции
     formFieldList.forEach((formFieldElement) => {
+        const formFieldInputElement = formFieldElement.querySelector('.form-field__input');
         // каждому полю добавим обработчик события input
-        formFieldElement.addEventListener('input', () => {
+        formFieldInputElement.addEventListener('input', () => {
             // Внутри колбэка вызовем isValid,
             // передав ей форму и проверяемый элемент
-            checkValidation(formElement, formFieldElement);
+            checkValidation(formFieldElement);
             // Вызовем toggleButtonState и передадим ей массив полей и кнопку
             toggleButtonState(formFieldList, buttonElement);
             console.log(formFieldElement)
