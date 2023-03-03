@@ -4,7 +4,7 @@ const overlay = document.querySelectorAll('.overlay-form'); //оверлэй, к
 const popup = document.querySelectorAll('.popup'); //форма, которую буду менять
 const editPopup = document.querySelector('.edit-popup');
 const editOverlay = document.querySelector('.edit-overlay');
-const buttonSave = document.querySelector('.form__save');
+const buttonSave = document.querySelector('.form__submit');
 const editPopupClose = document.querySelector('.edit-close');
 const addPopupClose = document.querySelector('.add-close');
 const titleElem = document.querySelector('.kusto__title');
@@ -173,16 +173,23 @@ const setEventListeners = (formElement) => {
     // Находим все поля внутри формы,
     // сделаем из них массив методом Array.from
     const formFieldList = Array.from(formElement.querySelectorAll('.form-field'));
-    const buttonElement = formElement.querySelector('.form__save');
+    console.log(formFieldList)
+    const buttonElement = formElement.querySelector('.form__submit');
+
+
+    // toggleButtonState(formFieldList, buttonElement);
 
     // Обойдём все элементы полученной коллекции
     formFieldList.forEach((formFieldElement) => {
+        // const formFieldInputElement = Array.from(formFieldElement.querySelectorAll('.form-field__input'));
+
         const formFieldInputElement = formFieldElement.querySelector('.form-field__input');
+
         // каждому полю добавим обработчик события input
         formFieldInputElement.addEventListener('input', () => {
             // Внутри колбэка вызовем isValid,
             // передав ей форму и проверяемый элемент
-            checkValidation(formFieldElement);
+            checkValidation(formFieldElement, formFieldInputElement);
             // Вызовем toggleButtonState и передадим ей массив полей и кнопку
             toggleButtonState(formFieldList, buttonElement);
             console.log(formFieldElement)
@@ -202,31 +209,40 @@ const enableValidation = () => {
     });
 };
 
+// const formFieldInputElement = document.querySelectorAll('.form-field__input');
+
 const hasInvalidInput = (formFieldList) => {
+    console.log({ formFieldList })
+    debugger;
     // проходим по этому массиву методом some
     return formFieldList.some((formFieldElement) => {
+           const formFieldInputElement = formFieldElement.querySelector('.form-field__input');
         // Если поле не валидно, колбэк вернёт true
         // Обход массива прекратится и вся функция
         // hasInvalidInput вернёт true
+        return !formFieldInputElement.validity.valid;
 
-        return !formFieldElement.validity.valid;
-    })
+    });
 };
-
+console.log(hasInvalidInput)
 // Функция принимает массив полей ввода
 // и элемент кнопки, состояние которой нужно менять
 
 const toggleButtonState = (formFieldList, buttonElement) => {
+
+
     // Если есть хотя бы один невалидный инпут
     if (hasInvalidInput(formFieldList)) {
+
         // сделай кнопку неактивной
-        buttonElement.classList.add('form__save_inactive');
+        buttonElement.classList.add('form__submit_inactive');
         buttonElement.disabled = true;
     } else {
         // иначе сделай кнопку активной
-        buttonElement.classList.remove('form__save_inactive');
+        buttonElement.classList.remove('form__submit_inactive');
         buttonElement.disabled = false;
     }
+
 };
 
 popupEditButton.addEventListener('click', function () {
@@ -290,4 +306,5 @@ const closePopupByEscape = (evt) => {
 
 // Вызовем функцию
 enableValidation();
+
 

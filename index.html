@@ -45,15 +45,15 @@
         <label class="form-field">
           <input class="form-field__input form-field__input_name" type="text" placeholder="Имя" minlength="2"
             required>
-          <span class="form-field__input-error name-input-error"></span>
+          <span class="form-field__input-error"></span>
         </label>
         <label class="form-field">
           <input class="form-field__input form-field__input_info" type="text" placeholder="О себе" minlength="2"
             required>
-          <span class="form-field__input-error info-input-error"></span>
+          <span class="form-field__input-error"></span>
         </label>
 
-        <button type="submit" class="form__save form__save_inactive">
+        <button type="submit" class="form__submit form__submit_inactive">
           Сохранить
         </button>
       </form>
@@ -65,16 +65,17 @@
       <button type="button" class="popup__close add-close"></button>
       <form class="form" novalidate>
         <legend class="form__title">Новое место</legend>
-        <label class="form__field"><input id="image-name-input" class="form__input form__input_image-name" type="text"
+        <label class="form-field">
+          <input  class="form-field__input form-field__input_image-name" type="text"
             placeholder="Название" minlength="2" required>
-          <span class="form__input-error image-name-input-error"></span>
+          <span class="form-field__input-error image-name-input-error"></span>
         </label>
-        <label class="form__field">
-          <input id="url-input" class="form__input form__input_url" type="url" placeholder="Ссылка на картинку"
+        <label class="form-field">
+          <input class="form-field__input form-field__input_url" type="url" placeholder="Ссылка на картинку"
             required>
-          <span class="form__input-error url-input-error"></span>
+          <span class="form-field__input-error url-input-error"></span>
         </label>
-        <button type="submit" class="form__save item-create">
+        <button type="submit" class="form__submit form__submit_inactive item-create">
           Создать
         </button>
       </form>
