@@ -10,18 +10,14 @@ const addPopupClose = document.querySelector('.add-close');
 const titleElem = document.querySelector('.kusto__title');
 const subtitleElem = document.querySelector('.kusto__subtitle');
 const formElement = document.querySelector('.form');
-// const formInput = formElement.querySelector('.form__input');
-// console.log(formInput)
 const inputName = document.querySelector('.form-field__input_name');
 const inputInfo = document.querySelector('.form-field__input_info');
-// const formError = formElement.querySelector(`.${formInput.id}-error`);
-// console.log(formError)
 const popupAddButton = document.querySelector('.kusto__add-button'); //нахожу в обработчике кнопку, с которой работаю
 const addPopup = document.querySelector('.add-popup');
 const addOverlay = document.querySelector('.add-overlay');
 const createNewItemButton = document.querySelector('.item-create');
-const inputImageName = document.querySelector('.form__input_image-name');
-const inputImage = document.querySelector('.form__input_url');
+const inputImageName = document.querySelector('.form-field__input_image-name');
+const inputImage = document.querySelector('.form-field__input_url');
 const cards = [
     {
         name: 'Архыз',
@@ -56,7 +52,6 @@ const containerGrid = document.querySelector('.photo-grid');
 function openPopup(overlay, popup) {
     overlay.classList.add('overlay-form_open'); //добавил оверлэй при открытом попап
     popup.classList.add('popup_open'); //добавил открытый попап
-
 }
 
 function closePopup(overlay, popup) {
@@ -176,12 +171,8 @@ const setEventListeners = (formElement) => {
     console.log(formFieldList)
     const buttonElement = formElement.querySelector('.form__submit');
 
-
-    // toggleButtonState(formFieldList, buttonElement);
-
     // Обойдём все элементы полученной коллекции
     formFieldList.forEach((formFieldElement) => {
-        // const formFieldInputElement = Array.from(formFieldElement.querySelectorAll('.form-field__input'));
 
         const formFieldInputElement = formFieldElement.querySelector('.form-field__input');
 
@@ -209,19 +200,15 @@ const enableValidation = () => {
     });
 };
 
-// const formFieldInputElement = document.querySelectorAll('.form-field__input');
-
 const hasInvalidInput = (formFieldList) => {
-    console.log({ formFieldList })
-    debugger;
+
     // проходим по этому массиву методом some
     return formFieldList.some((formFieldElement) => {
-           const formFieldInputElement = formFieldElement.querySelector('.form-field__input');
+        const formFieldInputElement = formFieldElement.querySelector('.form-field__input');
         // Если поле не валидно, колбэк вернёт true
         // Обход массива прекратится и вся функция
         // hasInvalidInput вернёт true
         return !formFieldInputElement.validity.valid;
-
     });
 };
 console.log(hasInvalidInput)
@@ -229,7 +216,6 @@ console.log(hasInvalidInput)
 // и элемент кнопки, состояние которой нужно менять
 
 const toggleButtonState = (formFieldList, buttonElement) => {
-
 
     // Если есть хотя бы один невалидный инпут
     if (hasInvalidInput(formFieldList)) {
@@ -242,7 +228,6 @@ const toggleButtonState = (formFieldList, buttonElement) => {
         buttonElement.classList.remove('form__submit_inactive');
         buttonElement.disabled = false;
     }
-
 };
 
 popupEditButton.addEventListener('click', function () {
@@ -292,7 +277,6 @@ addOverlay.addEventListener('click', function (evt) {
     if (evt.target.classList.contains('add-overlay')) {
         closePopup(evt.target);
     }
-
 }); //закрытие попапа 'редактировать профиль' по нажатию на оверлэй
 
 const closePopupByEscape = (evt) => {
